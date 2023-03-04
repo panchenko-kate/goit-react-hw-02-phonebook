@@ -10,6 +10,10 @@ export class App extends Component {
 
   formSubmitHandler = data => {
     console.log(data)
+    this.setState(prevState => {
+      return {
+      contacts: [...prevState.contacts, {...data},],
+    }})
   };
 
 
@@ -21,8 +25,7 @@ export class App extends Component {
         onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
         <ContactList 
-        contacts={this.state.contacts}
-        name={this.state.name} />
+        contacts={this.state.contacts} />
       </div>
     )
   }

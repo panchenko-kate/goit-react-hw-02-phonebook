@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Div, Label, Btn, Input } from './ContactForm.styled';
+import { nanoid } from 'nanoid';
 
 export default class ContactForm extends Component {
     state = {
@@ -18,9 +19,6 @@ export default class ContactForm extends Component {
         evt.preventDefault();
 
         this.props.onSubmit(this.state);
-        // const { name, contacts } = this.state;
-        // const newContact = { name };
-        // this.setState({ contacts: [...contacts, newContact], name: '' });
 
         this.reset();
     };
@@ -28,14 +26,18 @@ export default class ContactForm extends Component {
     reset = () => {
         this.setState({ name: '', number: ''});
     };
+
+    nameInputId = nanoid();
+    numberInputId = nanoid();
     
     render() {
     return (
         <Div>
             <form onSubmit={this.handleSubmit}>
-            <Label>
+            <Label htmlFor={this.nameInputId}>
                 Name
                     <Input
+                    id={this.nameInputId}
                     type="text"
                     name="name"
                     value={this.state.name}
@@ -45,9 +47,10 @@ export default class ContactForm extends Component {
                     onChange={this.handleInputChange}
                 />
             </Label>
-            <Label>
+            <Label htmlFor={this.numberInputId}>
                 Number
                     <Input
+                    id={this.numberInputId}
                     type="tel"
                     name="number"
                     value={this.state.number}

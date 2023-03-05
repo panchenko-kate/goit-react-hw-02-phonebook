@@ -1,4 +1,5 @@
 import { Btn } from './ContactList.styled';
+import PropTypes from 'prop-types';
 
 export const ContactList = ({ filteredContacts, onDelete }) => {
     return (
@@ -11,3 +12,8 @@ export const ContactList = ({ filteredContacts, onDelete }) => {
             </ul>
     )
 };
+
+ContactList.prototype = {
+    filteredContacts: PropTypes.objectOf(PropTypes.string),
+    onDelete: PropTypes.func
+} 

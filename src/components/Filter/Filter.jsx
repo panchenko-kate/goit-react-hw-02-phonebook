@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 import { Label, Input } from './Filter.styled';
+import PropTypes from 'prop-types';
 
 const Filter = ({ value, onChange }) => {
     const InputId = nanoid();
@@ -18,3 +19,8 @@ const Filter = ({ value, onChange }) => {
 }
 
 export default Filter;
+
+Filter.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func
+}
